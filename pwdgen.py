@@ -13,6 +13,10 @@ l,lu,lun,luns\n"
 try:
     lenght = int(sys.argv[1])
 
+    if lenght > 94:
+        print('\n\tlenght must be not 0 nor greater than 94')
+        exit
+
     low = string.ascii_lowercase
     up = string.ascii_uppercase
     num = string.digits
@@ -39,7 +43,6 @@ try:
 
     print(password)  
 
-
 except ValueError:
     print(helper)
 except IndexError:
@@ -48,6 +51,10 @@ except NameError:
     print(helper)
 except TypeError:
     print(helper)
+
+
+
+
 
 
 
