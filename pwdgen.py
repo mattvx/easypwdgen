@@ -2,7 +2,13 @@ import random
 import string
 import sys
 
-helper = "\n\tCommand usage:\tpwdgen.py x charset\n\t\tWhere x is an integer defining password lenght\n\t\tAnd \"charset\" is available options:\n\n\t\t\tl = only lower\n\t\t\tu = only upper\n\t\t\tn = only numbers\n\t\t\ts = only symbols.\n\n\t\tThere are also combinations available:\n\n\t\t\tl,lu,lun,luns\n"
+helper = "\n\tCommand usage:\tpwdgen.py x charset\n\t\t\
+Where x is an integer defining password lenght\n\t\t\
+And \"charset\" is available options:\n\n\t\t\t\
+l = only lower\n\t\t\tu = only upper\n\t\t\t\
+n = only numbers\n\t\t\ts = only symbols.\n\n\t\t\
+There are also combinations available:\n\n\t\t\t\
+l,lu,lun,luns\n"
 
 try:
     lenght = int(sys.argv[1])
