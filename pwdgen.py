@@ -51,12 +51,3 @@ except NameError:
     print(helper)
 except TypeError:
     print(helper)
-
-
-
-
-
-
-
-
-
