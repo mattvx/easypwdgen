@@ -18,9 +18,10 @@ except getopt.GetoptError:
 
 try:
     for opt, arg in opts:
+        chars = string.ascii_letters
         if opt in ['-l']:
             length = int(arg)
-        if opt in ['-l','-n']:
+        if opt in ['-n']:
             chars = string.ascii_letters + string.digits
         elif opt in ['-s']:
             chars = string.ascii_letters + '!@#$%^&*()'
