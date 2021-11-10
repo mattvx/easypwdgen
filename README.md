@@ -10,4 +10,4 @@ One of these options:
   -s -> lower+upper+symbols
   -S -> lower+upper+digits+symbols
   
-Caution: Code does not work! it prints more than one password if you use options.
+
