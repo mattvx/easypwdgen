@@ -6,7 +6,7 @@ usage = "Python random password generator.\n \
         One of these options:\n\
         -n -> lower+upper+digits \n\
         -s -> lower+upper+symbols \n\
-        -S -> lower+upper+digits+symbols
+        -S -> lower+upper+digits+symbols"
 
 argomentiPassati = sys.argv[1:]
 
@@ -20,8 +20,7 @@ try:
     for opt, arg in opts:
         if opt in ['-l']:
             length = int(arg)
-            chars = string.ascii_letters 
-        elif opt in ['-n']:
+        if opt in ['-l','-n']:
             chars = string.ascii_letters + string.digits
         elif opt in ['-s']:
             chars = string.ascii_letters + '!@#$%^&*()'
@@ -30,9 +29,9 @@ try:
     
 #        random.seed = (os.urandom(1024))
 
-        password = "".join(random.choice(chars) for i in range(length))
+    password = "".join(random.choice(chars) for i in range(length))
 
-        print(password)
+    print(password)
     
 except:
     print(usage)
