@@ -1,4 +1,4 @@
-import getopt, random, string, sys
+import getopt, random, string, sys, os
 
 usage = "Python random password generator.\n \
         You must provide: -l xxx ---> Lenght of the password\n\
@@ -27,7 +27,7 @@ try:
         elif opt in ['-S']:
             chars = string.ascii_letters + '!@#$%^&*()' + string.digits
     
-#        random.seed = (os.urandom(1024))
+    random.seed = (os.urandom(1024))
 
     password = "".join(random.choice(chars) for i in range(length))
 
