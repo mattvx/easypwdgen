@@ -1,8 +1,6 @@
-import random
-import string
-import sys
+import getopt, random, string, sys
 
-helper = "\n\tCommand usage:\tpwdgen.py x charset\n\t\t\
+usage = "\n\tCommand usage:\tpwdgen.py -lx -n -s\n\t\t\
 Where x is an integer defining password lenght\n\t\t\
 And \"charset\" is available options:\n\n\t\t\t\
 l = only lower\n\t\t\tu = only upper\n\t\t\t\
@@ -10,44 +8,32 @@ n = only numbers\n\t\t\ts = only symbols.\n\n\t\t\
 There are also combinations available:\n\n\t\t\t\
 l,lu,lun,luns\n"
 
+argomentiPassati = sys.argv[1:]
+
 try:
-    lenght = int(sys.argv[1])
+    opts, args = getopt.getopt(argomentiPassati, "l:nsS")
+    
+except getopt.GetoptError:
+    print(usage)
 
-    if lenght > 94:
-        print('\n\tlenght must be not 0 nor greater than 94')
-        exit
+try:
+    for opt, arg in opts:
+        if opt in ['-l']:
+            argomento_stringa = arg
+            length = int(argomento_stringa)
+            chars = string.ascii_letters 
+        elif opt in ['-n']:
+            chars = string.ascii_letters + string.digits
+        elif opt in ['-s']:
+            chars = string.ascii_letters + '!@#$%^&*()'
+        elif opt in ['-S']:
+            chars = string.ascii_letters + '!@#$%^&*()' + string.digits
+    
+#        random.seed = (os.urandom(1024))
 
-    low = string.ascii_lowercase
-    up = string.ascii_uppercase
-    num = string.digits
-    sym = string.punctuation
+        password = "".join(random.choice(chars) for i in range(length))
 
-    if sys.argv[2] == 'l':
-        all = low
-    if sys.argv[2] == 'u':
-        all = up
-    if sys.argv[2] == 'n':
-        all = num
-    if sys.argv[2] == 's':
-        all = sym    
-    if sys.argv[2] == 'lu':
-        all = low + up
-    if sys.argv[2] == 'lun':
-        all = low + up + num
-    if sys.argv[2] == 'luns':
-        all = low + up + num + sym
-
-    temp_pass = random.sample(all, lenght)
-
-    password = "".join(temp_pass)
-
-    print(password)  
-
-except ValueError:
-    print(helper)
-except IndexError:
-    print(helper)
-except NameError:
-    print(helper)
-except TypeError:
-    print(helper)
+        print(password)
+    
+except:
+    print(usage)
