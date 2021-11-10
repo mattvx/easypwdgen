@@ -1,12 +1,12 @@
 import getopt, random, string, sys
 
-usage = "\n\tCommand usage:\tpwdgen.py -lx -n -s\n\t\t\
-Where x is an integer defining password lenght\n\t\t\
-And \"charset\" is available options:\n\n\t\t\t\
-l = only lower\n\t\t\tu = only upper\n\t\t\t\
-n = only numbers\n\t\t\ts = only symbols.\n\n\t\t\
-There are also combinations available:\n\n\t\t\t\
-l,lu,lun,luns\n"
+usage = "Python random password generator.\n \
+        You must provide: -l xxx ---> Lenght of the password\n\
+        If no options are specified, default charset is lower+upper\n\
+        One of these options:\n\
+        -n -> lower+upper+digits \n\
+        -s -> lower+upper+symbols \n\
+        -S -> lower+upper+digits+symbols
 
 argomentiPassati = sys.argv[1:]
 
@@ -19,8 +19,7 @@ except getopt.GetoptError:
 try:
     for opt, arg in opts:
         if opt in ['-l']:
-            argomento_stringa = arg
-            length = int(argomento_stringa)
+            length = int(arg)
             chars = string.ascii_letters 
         elif opt in ['-n']:
             chars = string.ascii_letters + string.digits
